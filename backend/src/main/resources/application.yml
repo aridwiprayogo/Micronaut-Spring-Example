@@ -1,0 +1,25 @@
+bintray:
+  organization: micronaut
+  repository: profiles
+  apiversion: v1
+
+#micronaut:
+#  application:
+#    name: backend
+#  security:
+#    authentication: bearer
+#    token:
+#      jwt:
+#        signatures:
+#          secret:
+#            generator:
+#              secret: '"${JWT_GENERATOR_SIGNATURE_SECRET:pleaseChangeThisSecretForANewOne}"'
+#datasources:
+#  default:
+#    url: jdbc:postgresql://localhost:5432/postgres
+#    driverClassName: org.postgresql.Driver
+#    username: sitamvan
+#    password: '01111997'
+#    schema-generate: CREATE_DROP
+#    dialect: POSTGRES
+#jpa.default.properties.hibernate.hbm2ddl.auto: update
