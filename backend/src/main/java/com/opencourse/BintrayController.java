@@ -1,14 +1,16 @@
 package com.opencourse;
 
 import io.micronaut.http.MediaType;
-import io.micronaut.http.annotation.Controller;
-import io.micronaut.http.annotation.Get;
 import io.reactivex.Flowable;
 import io.reactivex.Maybe;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@Controller("/bintray")
+@RestController()
+@RequestMapping("/bintray")
 public class BintrayController {
 
     private final BintrayLowLevelClient bintrayLowLevelClient;
@@ -21,12 +23,12 @@ public class BintrayController {
         this.bintrayClient = bintrayClient;
     }
 
-    @Get("/packages-lowlevel")
+    @GetMapping("/packages-lowlevel")
     Maybe<List<BintrayPackage>> packagesWithLowLevelClient() {
         return bintrayLowLevelClient.fetchPackages();
     }
 
-    @Get(uri = "/packages", produces = MediaType.APPLICATION_JSON_STREAM)
+    @GetMapping(value = "/packages", produces = MediaType.APPLICATION_JSON_STREAM)
     Flowable<BintrayPackage> packages() {
         return bintrayClient.fetchPackages();
     }
